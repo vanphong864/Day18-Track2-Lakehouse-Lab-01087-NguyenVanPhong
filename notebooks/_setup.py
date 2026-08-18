@@ -21,3 +21,9 @@ _LOCAL = _HERE.parent / "scripts"
 
 _TARGET = _DOCKER if _DOCKER.exists() else _LOCAL
 sys.path.insert(0, str(_TARGET))
+
+if sys.platform == "win32":
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
